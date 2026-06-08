@@ -5,10 +5,19 @@ A small funnel analytics web app for popup campaigns. Marketers can see step-by-
 ## Screenshots
 
 ![Campaign List](./screenshots/screenshot-1.png)
+*Campaign list — 8 campaigns with overall conversion rates and device indicators*
+
 ![Campaign Detail – worst + critical steps](./screenshots/screenshot-2.png)
+*Step-level funnel — biggest drop-off (red) and critically high drop-off (orange) highlighted simultaneously*
+
 ![Campaign Detail – performing well](./screenshots/screenshot-3.png)
+*Positive insights panel when all steps perform within acceptable thresholds*
+
 ![Campaign Detail – worst + critical (first step)](./screenshots/screenshot-4.png)
+*First step identified as biggest drop-off with full 3-insight panel*
+
 ![Campaign Detail – 4-step funnel without critical](./screenshots/screenshot-5.png)
+*4-step funnel with green completion rates without critical steps*
 
 ## Prerequisites
 
