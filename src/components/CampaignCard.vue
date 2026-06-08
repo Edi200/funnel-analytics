@@ -39,22 +39,25 @@ function handleKeydown(event: KeyboardEvent) {
   <article
     role="button"
     tabindex="0"
-    class="cursor-pointer rounded-lg bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+    class="cursor-pointer rounded-xl border border-[#CECBF6] bg-white p-5 transition-all duration-300 hover:shadow-lg"
     @click="handleClick"
     @keydown="handleKeydown"
   >
-    <h2 class="font-bold text-gray-900">{{ campaign.name }}</h2>
+    <h2 class="font-[family-name:var(--font-heading)] text-base font-semibold text-[#26215C]">
+      {{ campaign.name }}
+    </h2>
 
-    <div class="mt-3 flex items-center gap-2 text-sm text-gray-600">
+    <div class="mt-3 flex items-center gap-2 text-xs text-[#7F77DD]">
       <span
-        class="inline-flex h-5 w-5 shrink-0 text-gray-600 [&_svg]:h-full [&_svg]:w-full"
+        class="inline-flex h-4 w-4 shrink-0 text-[#7F77DD] [&_svg]:h-full [&_svg]:w-full"
         v-html="deviceInfo.icon"
       />
       <span>{{ deviceInfo.label }}</span>
     </div>
 
-    <p class="mt-3 text-sm text-gray-700">
-      {{ conversionRate }}% overall conversion
+    <p class="mt-4 font-[family-name:var(--font-heading)] text-3xl font-bold text-[#534AB7]">
+      {{ conversionRate }}%
     </p>
+    <p class="text-xs text-[#888780]">overall conversion</p>
   </article>
 </template>

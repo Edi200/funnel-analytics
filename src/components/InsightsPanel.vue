@@ -46,20 +46,23 @@ const insights = computed(() => {
 </script>
 
 <template>
-  <div class="rounded-lg border border-gray-200 bg-white p-5">
-    <h2 class="font-semibold text-gray-900">Insights</h2>
+  <div class="mt-4 rounded-xl border border-[#CECBF6] bg-white p-5">
+    <h2 class="mb-3 font-[family-name:var(--font-heading)] text-base font-semibold text-[#26215C]">
+      Insights
+    </h2>
 
-    <ul v-if="insights.length > 0" class="mt-3 space-y-3">
+    <ul v-if="insights.length > 0">
       <li
         v-for="(insight, index) in insights"
         :key="index"
-        class="border-l-2 border-blue-400 pl-3 text-sm text-gray-700"
+        class="mb-3 border-l-2 border-[#7F77DD] pl-3 text-sm leading-relaxed text-[#5F5E5A]"
+        :class="{ 'mb-0': index === insights.length - 1 }"
       >
         {{ insight }}
       </li>
     </ul>
 
-    <p v-else class="mt-2 text-sm text-gray-500">
+    <p v-else class="text-sm text-[#888780]">
       No significant issues detected.
     </p>
   </div>

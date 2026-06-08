@@ -20,61 +20,69 @@ const barWidthPercent = computed(() =>
 const formattedViews = computed(() => props.step.views.toLocaleString())
 
 const formattedProceeds = computed(() => props.step.proceeds.toLocaleString())
+
+const dropOffLabel = computed(() =>
+  props.isFirst ? "didn't engage" : 'drop-off',
+)
 </script>
 
 <template>
   <article
-    class="rounded-lg p-4"
+    class="flex items-center gap-4 rounded-xl p-4"
     :class="
       isWorst
-        ? 'border-2 border-orange-400 bg-orange-50'
-        : 'border border-gray-200 bg-white'
+        ? 'border-2 border-[#EF9F27] bg-[#FAEEDA]'
+        : 'border border-[#CECBF6] bg-white'
     "
   >
-    <p class="text-xs tracking-wide text-gray-400 uppercase">
-      Step {{ stepNumber }}
-    </p>
+    <span
+      class="min-w-[48px] font-[family-name:var(--font-heading)] text-6xl leading-none font-bold"
+      :class="isWorst ? 'text-[#FAC775]' : 'text-[#EEEDFE]'"
+    >
+      {{ stepNumber }}
+    </span>
 
-    <p
-      v-if="isFirst"
-      class="mt-2 text-sm font-medium text-red-600"
-    >
-      ▼ {{ step.dropOffRate }}% didn't engage
-    </p>
-    <p
-      v-else
-      class="mt-2 text-sm font-medium text-red-600"
-    >
-      ▼ {{ step.dropOffRate }}% drop-off
-    </p>
-
-    <div
-      class="flex items-start justify-between gap-3"
-      :class="isFirst ? 'mt-2' : 'mt-1'"
-    >
-      <h3 class="font-semibold text-gray-900">{{ step.name }}</h3>
-      <span
-        v-if="isWorst && !isFirst"
-        class="inline-flex shrink-0 items-center gap-1 rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700"
-      >
+    <div class="min-w-0 flex-1">
+      <div class="flex items-start justify-between gap-2">
+        <h3
+          class="font-[family-name:var(--font-heading)] text-sm font-semibold"
+          :class="isWorst ? 'text-[#633806]' : 'text-[#26215C]'"
+        >
+          {{ step.name }}
+        </h3>
         <span
-          class="inline-flex h-4 w-4 text-yellow-500 [&_svg]:h-full [&_svg]:w-full"
-          v-html="warningIcon"
-        />
-        Biggest drop-off
-      </span>
-    </div>
+          v-if="isWorst && !isFirst"
+          class="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#A32D2D] bg-[#FCEBEB] px-2 py-0.5 text-xs font-medium text-[#A32D2D]"
+        >
+          <span
+            class="inline-flex h-4 w-4 text-[#A32D2D] [&_svg]:h-full [&_svg]:w-full"
+            v-html="warningIcon"
+          />
+          Biggest drop-off
+        </span>
+      </div>
 
-    <p class="mt-1 text-sm text-gray-600">
-      {{ formattedViews }} views · {{ formattedProceeds }} proceeded
-    </p>
+      <p
+        class="mb-2 text-xs"
+        :class="isWorst ? 'text-[#854F0B]' : 'text-[#888780]'"
+      >
+        {{ formattedViews }} views · {{ formattedProceeds }} proceeded
+      </p>
 
-    <div class="mt-3 h-3 w-full overflow-hidden rounded-full bg-gray-100">
+      <p class="mb-1 text-xs font-medium text-[#E24B4A]">
+        ▼ {{ step.dropOffRate }}% {{ dropOffLabel }}
+      </p>
+
       <div
-        class="h-full rounded-full transition-all"
-        :class="isWorst ? 'bg-orange-500' : 'bg-blue-500'"
-        :style="{ width: `${barWidthPercent}%` }"
-      />
+        class="h-1.5 w-full rounded"
+        :class="isWorst ? 'bg-[#FAC775]' : 'bg-[#EEEDFE]'"
+      >
+        <div
+          class="h-1.5 rounded"
+          :class="isWorst ? 'bg-[#BA7517]' : 'bg-[#7F77DD]'"
+          :style="{ width: `${barWidthPercent}%` }"
+        />
+      </div>
     </div>
   </article>
 </template>

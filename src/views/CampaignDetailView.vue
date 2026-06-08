@@ -55,35 +55,39 @@ function goBack() {
   <div class="mx-auto max-w-4xl px-4 py-8">
     <button
       type="button"
-      class="mb-6 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+      class="mb-6 flex items-center gap-1 text-sm text-[#7F77DD] hover:text-[#534AB7]"
       @click="goBack"
     >
       ← Back
     </button>
 
     <div v-if="isNotFound">
-      <h1 class="text-2xl font-bold text-gray-900">Campaign not found</h1>
-      <p class="mt-2 text-gray-600">
+      <h1 class="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#26215C]">
+        Campaign not found
+      </h1>
+      <p class="mt-2 text-sm text-[#888780]">
         The campaign you're looking for doesn't exist.
       </p>
     </div>
 
     <template v-else-if="campaign">
-      <h1 class="text-2xl font-bold text-gray-900">{{ campaign.name }}</h1>
+      <h1 class="mb-2 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#26215C]">
+        {{ campaign.name }}
+      </h1>
 
-      <div class="mt-3 flex items-center gap-2 text-sm text-gray-600">
+      <div class="mb-1 flex items-center gap-2 text-sm text-[#7F77DD]">
         <span
-          class="inline-flex h-5 w-5 shrink-0 text-gray-600 [&_svg]:h-full [&_svg]:w-full"
+          class="inline-flex h-4 w-4 shrink-0 text-[#7F77DD] [&_svg]:h-full [&_svg]:w-full"
           v-html="deviceInfo.icon"
         />
         <span>{{ deviceInfo.label }}</span>
       </div>
 
-      <p class="mt-3 text-sm text-gray-700">
+      <p class="mb-6 text-sm text-[#888780]">
         {{ conversionRate }}% overall conversion
       </p>
 
-      <div class="mt-8 space-y-4">
+      <div class="space-y-4">
         <FunnelStep
           v-for="(step, index) in stepsWithMetrics"
           :key="step.id"
@@ -96,7 +100,6 @@ function goBack() {
       </div>
 
       <InsightsPanel
-        class="mt-8"
         :campaign="campaign"
         :steps-with-metrics="stepsWithMetrics"
         :worst-step="worstStep"
