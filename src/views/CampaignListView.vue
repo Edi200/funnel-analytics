@@ -13,9 +13,10 @@ function navigateToCampaign(id: string) {
 
 <template>
   <div class="mx-auto max-w-4xl px-4 py-8">
-    <h1 class="mb-6 font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#26215C]">
+    <h1 class="text-center font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#26215C] mb-4">
       Campaign Analytics
     </h1>
+    <hr class="mb-6 border-[#CECBF6]" />
 
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <CampaignCard
