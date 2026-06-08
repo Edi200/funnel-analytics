@@ -28,14 +28,14 @@ export function useFunnelMetrics(campaign: MaybeRefOrGetter<CampaignForMetrics>)
   const worstStepIndex = computed(() => {
     const steps = stepsWithMetrics.value
 
-    if (steps.length === 0) {
+    if (steps.length <= 1) {
       return -1
     }
 
-    let worstIdx = 0
-    let maxDropOff = steps[0]!.dropOffRate
+    let worstIdx = 1
+    let maxDropOff = steps[1]!.dropOffRate
 
-    for (let i = 1; i < steps.length; i++) {
+    for (let i = 2; i < steps.length; i++) {
       const step = steps[i]
       if (step && step.dropOffRate > maxDropOff) {
         maxDropOff = step.dropOffRate

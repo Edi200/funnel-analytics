@@ -36,7 +36,13 @@ const formattedProceeds = computed(() => props.step.proceeds.toLocaleString())
     </p>
 
     <p
-      v-if="!isFirst"
+      v-if="isFirst"
+      class="mt-2 text-sm font-medium text-red-600"
+    >
+      ▼ {{ step.dropOffRate }}% didn't engage
+    </p>
+    <p
+      v-else
       class="mt-2 text-sm font-medium text-red-600"
     >
       ▼ {{ step.dropOffRate }}% drop-off
@@ -48,7 +54,7 @@ const formattedProceeds = computed(() => props.step.proceeds.toLocaleString())
     >
       <h3 class="font-semibold text-gray-900">{{ step.name }}</h3>
       <span
-        v-if="isWorst"
+        v-if="isWorst && !isFirst"
         class="inline-flex shrink-0 items-center gap-1 rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700"
       >
         <span

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import DesktopIcon from '@/assets/icons/desktop.svg?raw'
 import MobileIcon from '@/assets/icons/mobile.svg?raw'
 import FunnelStep from '@/components/FunnelStep.vue'
+import InsightsPanel from '@/components/InsightsPanel.vue'
 import { useCampaigns } from '@/composables/useCampaigns'
 import { useFunnelMetrics } from '@/composables/useFunnelMetrics'
 import type { Campaign } from '@/types'
@@ -27,7 +28,7 @@ const campaign = computed(() =>
 
 const isNotFound = computed(() => !campaign.value)
 
-const { stepsWithMetrics, worstStepIndex } = useFunnelMetrics(
+const { stepsWithMetrics, worstStep, worstStepIndex } = useFunnelMetrics(
   () => campaign.value ?? EMPTY_CAMPAIGN,
 )
 
@@ -94,10 +95,13 @@ function goBack() {
         />
       </div>
 
-      <div class="mt-8 rounded-lg border border-gray-200 bg-white p-5">
-        <h2 class="font-semibold text-gray-900">Insights</h2>
-        <p class="mt-2 text-sm text-gray-500">Coming in Phase E</p>
-      </div>
+      <InsightsPanel
+        class="mt-8"
+        :campaign="campaign"
+        :steps-with-metrics="stepsWithMetrics"
+        :worst-step="worstStep"
+        :overall-conversion-rate="conversionRate"
+      />
     </template>
   </div>
 </template>
