@@ -84,6 +84,161 @@
           "description": "Thank-you screen confirming subscription."
         }
       ]
+    },
+    {
+      "id": "camp_004",
+      "name": "Black Friday Flash Sale",
+      "device": "desktop",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Flash sale banner",
+          "type": "teaser",
+          "views": 25000,
+          "proceeds": 8200,
+          "description": "Full-width banner with countdown timer and '20% off today only'."
+        },
+        {
+          "id": "step_2",
+          "name": "Email capture",
+          "type": "email",
+          "views": 8200,
+          "proceeds": 1900,
+          "description": "Email form to unlock the discount code."
+        },
+        {
+          "id": "step_3",
+          "name": "Coupon reveal",
+          "type": "coupon",
+          "views": 1900,
+          "proceeds": 1820,
+          "description": "Shows the 20% off coupon code with copy button."
+        }
+      ]
+    },
+    {
+      "id": "camp_005",
+      "name": "Spin to Win Wheel",
+      "device": "desktop",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Wheel teaser",
+          "type": "teaser",
+          "views": 18000,
+          "proceeds": 6300,
+          "description": "Gamified popup with spin wheel and 'Try your luck' CTA."
+        },
+        {
+          "id": "step_2",
+          "name": "Email to spin",
+          "type": "email",
+          "views": 6300,
+          "proceeds": 4800,
+          "description": "Enter email to spin the wheel."
+        },
+        {
+          "id": "step_3",
+          "name": "Prize reveal",
+          "type": "success",
+          "views": 4800,
+          "proceeds": 4650,
+          "description": "Shows the won prize with redemption instructions."
+        }
+      ]
+    },
+    {
+      "id": "camp_006",
+      "name": "Mobile App Download Prompt",
+      "device": "mobile",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "App install teaser",
+          "type": "teaser",
+          "views": 9000,
+          "proceeds": 1200,
+          "description": "Bottom sheet promoting the mobile app with '10% off in-app' offer."
+        },
+        {
+          "id": "step_2",
+          "name": "Phone number capture",
+          "type": "email",
+          "views": 1200,
+          "proceeds": 380,
+          "description": "Form asking for phone number to send app download link via SMS."
+        },
+        {
+          "id": "step_3",
+          "name": "SMS sent confirmation",
+          "type": "success",
+          "views": 380,
+          "proceeds": 360,
+          "description": "Confirmation screen that SMS was sent with app download link."
+        }
+      ]
+    },
+    {
+      "id": "camp_007",
+      "name": "Loyalty Program Signup",
+      "device": "desktop",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Loyalty teaser",
+          "type": "teaser",
+          "views": 14000,
+          "proceeds": 5100,
+          "description": "Popup promoting loyalty points program with 'Earn 500 points today'."
+        },
+        {
+          "id": "step_2",
+          "name": "Account details form",
+          "type": "email",
+          "views": 5100,
+          "proceeds": 680,
+          "description": "Form with email, name and date of birth fields."
+        },
+        {
+          "id": "step_3",
+          "name": "Welcome reward",
+          "type": "success",
+          "views": 680,
+          "proceeds": 650,
+          "description": "Welcome screen showing earned points and next reward milestone."
+        }
+      ]
+    },
+    {
+      "id": "camp_008",
+      "name": "Back in Stock Alert",
+      "device": "mobile",
+      "steps": [
+        {
+          "id": "step_1",
+          "name": "Stock alert teaser",
+          "type": "teaser",
+          "views": 5500,
+          "proceeds": 2800,
+          "description": "Product-specific popup: 'This item is back! Get notified next time'."
+        },
+        {
+          "id": "step_2",
+          "name": "Email notification signup",
+          "type": "email",
+          "views": 2800,
+          "proceeds": 2100,
+          "description": "Simple email form to receive back-in-stock notifications."
+        },
+        {
+          "id": "step_3",
+          "name": "Confirmation",
+          "type": "success",
+          "views": 2100,
+          "proceeds": 2050,
+          "description": "Confirmation that email alert is set up."
+        }
+      ]
     }
   ]
 }
