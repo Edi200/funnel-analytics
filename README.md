@@ -1,48 +1,60 @@
-# funnel-analytics
+# Funnel Analytics
 
-This template should help get you started developing with Vue 3 in Vite.
+A small funnel analytics web app for popup campaigns. Marketers can see step-by-step drop-off data for each campaign and quickly identify the worst-performing steps.
 
-## Recommended IDE Setup
+## Screenshots
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+![Campaign List](./screenshots/screenshot-1.png)
+![Campaign Detail – worst + critical steps](./screenshots/screenshot-2.png)
+![Campaign Detail – performing well](./screenshots/screenshot-3.png)
+![Campaign Detail – worst + critical (first step)](./screenshots/screenshot-4.png)
+![Campaign Detail – 4-step funnel without critical](./screenshots/screenshot-5.png)
 
-## Recommended Browser Setup
+## Prerequisites
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Node.js `^20.19.0` or `>=22.12.0`
 
-## Type Support for `.vue` Imports in TS
+## Setup
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Run
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```sh
+## Build
+
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Project structure
 
-```sh
-npm run lint
 ```
+src/
+├── assets/
+│   ├── fonts/          # DM Sans, Inter
+│   └── icons/          # SVG icons (Heroicons)
+├── components/
+│   ├── CampaignCard.vue
+│   ├── FunnelStep.vue
+│   └── InsightsPanel.vue
+├── composables/
+│   ├── useCampaigns.ts
+│   └── useFunnelMetrics.ts
+├── data/
+│   └── campaigns.json
+├── types/
+│   └── index.ts
+└── views/
+    ├── CampaignListView.vue
+    └── CampaignDetailView.vue
+```
+
+See [WRITEUP.md](./WRITEUP.md) for design decisions, v1 scope, and AI usage.
