@@ -10,11 +10,13 @@ function roundToOneDecimal(value: number): number {
 }
 
 function computeDropOffRate(views: number, proceeds: number): number {
+  // Zero-view steps should not display metrics; callers treat 0 as no data.
   if (views === 0) {
     return 0
   }
 
-  return roundToOneDecimal(((views - proceeds) / views) * 100)
+  const rawRate = ((views - proceeds) / views) * 100
+  return roundToOneDecimal(Math.max(0, Math.min(100, rawRate)))
 }
 
 export function useFunnelMetrics(campaign: MaybeRefOrGetter<CampaignForMetrics>) {
@@ -32,10 +34,10 @@ export function useFunnelMetrics(campaign: MaybeRefOrGetter<CampaignForMetrics>)
       return -1
     }
 
-    let worstIdx = 1
-    let maxDropOff = steps[1]!.dropOffRate
+    let worstIdx = 0
+    let maxDropOff = steps[0]!.dropOffRate
 
-    for (let i = 2; i < steps.length; i++) {
+    for (let i = 1; i < steps.length; i++) {
       const step = steps[i]
       if (step && step.dropOffRate > maxDropOff) {
         maxDropOff = step.dropOffRate

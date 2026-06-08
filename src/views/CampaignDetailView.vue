@@ -94,13 +94,13 @@ function goBack() {
           :step="step"
           :step-number="index + 1"
           :is-worst="index === worstStepIndex"
-          :is-first="index === 0"
+          :is-critical="worstStepIndex !== -1 && index !== worstStepIndex && step.dropOffRate >= 60"
+          :is-last="index === stepsWithMetrics.length - 1"
           :total-views="totalViews"
         />
       </div>
 
       <InsightsPanel
-        :campaign="campaign"
         :steps-with-metrics="stepsWithMetrics"
         :worst-step="worstStep"
         :overall-conversion-rate="conversionRate"

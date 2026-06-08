@@ -20,7 +20,8 @@ export function useCampaigns() {
       return 0
     }
 
-    return roundToOneDecimal((lastStep.proceeds / firstStep.views) * 100)
+    const rawRate = (lastStep.proceeds / firstStep.views) * 100
+    return roundToOneDecimal(Math.min(100, rawRate))
   }
 
   return { campaigns, getOverallConversionRate }

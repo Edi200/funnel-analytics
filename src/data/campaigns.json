@@ -95,23 +95,23 @@
           "name": "Flash sale banner",
           "type": "teaser",
           "views": 25000,
-          "proceeds": 8200,
+          "proceeds": 6200,
           "description": "Full-width banner with countdown timer and '20% off today only'."
         },
         {
           "id": "step_2",
           "name": "Email capture",
           "type": "email",
-          "views": 8200,
-          "proceeds": 1900,
+          "views": 6200,
+          "proceeds": 1400,
           "description": "Email form to unlock the discount code."
         },
         {
           "id": "step_3",
           "name": "Coupon reveal",
           "type": "coupon",
-          "views": 1900,
-          "proceeds": 1820,
+          "views": 1400,
+          "proceeds": 1350,
           "description": "Shows the 20% off coupon code with copy button."
         }
       ]
@@ -126,23 +126,23 @@
           "name": "Wheel teaser",
           "type": "teaser",
           "views": 18000,
-          "proceeds": 6300,
+          "proceeds": 15800,
           "description": "Gamified popup with spin wheel and 'Try your luck' CTA."
         },
         {
           "id": "step_2",
           "name": "Email to spin",
           "type": "email",
-          "views": 6300,
-          "proceeds": 4800,
+          "views": 15800,
+          "proceeds": 14200,
           "description": "Enter email to spin the wheel."
         },
         {
           "id": "step_3",
           "name": "Prize reveal",
           "type": "success",
-          "views": 4800,
-          "proceeds": 4650,
+          "views": 14200,
+          "proceeds": 13900,
           "description": "Shows the won prize with redemption instructions."
         }
       ]
@@ -188,23 +188,23 @@
           "name": "Loyalty teaser",
           "type": "teaser",
           "views": 14000,
-          "proceeds": 5100,
+          "proceeds": 12700,
           "description": "Popup promoting loyalty points program with 'Earn 500 points today'."
         },
         {
           "id": "step_2",
           "name": "Account details form",
           "type": "email",
-          "views": 5100,
-          "proceeds": 680,
+          "views": 12700,
+          "proceeds": 11600,
           "description": "Form with email, name and date of birth fields."
         },
         {
           "id": "step_3",
           "name": "Welcome reward",
           "type": "success",
-          "views": 680,
-          "proceeds": 650,
+          "views": 11600,
+          "proceeds": 11280,
           "description": "Welcome screen showing earned points and next reward milestone."
         }
       ]
@@ -219,24 +219,32 @@
           "name": "Stock alert teaser",
           "type": "teaser",
           "views": 5500,
-          "proceeds": 2800,
+          "proceeds": 2900,
           "description": "Product-specific popup: 'This item is back! Get notified next time'."
         },
         {
           "id": "step_2",
           "name": "Email notification signup",
           "type": "email",
-          "views": 2800,
-          "proceeds": 2100,
+          "views": 2900,
+          "proceeds": 780,
           "description": "Simple email form to receive back-in-stock notifications."
         },
         {
           "id": "step_3",
+          "name": "Notification preferences",
+          "type": "email",
+          "views": 780,
+          "proceeds": 710,
+          "description": "Choose notification frequency: immediately, daily digest, or weekly."
+        },
+        {
+          "id": "step_4",
           "name": "Confirmation",
           "type": "success",
-          "views": 2100,
-          "proceeds": 2050,
-          "description": "Confirmation that email alert is set up."
+          "views": 710,
+          "proceeds": 695,
+          "description": "Confirmation screen that back-in-stock alert is set up."
         }
       ]
     }

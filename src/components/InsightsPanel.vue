@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Campaign, Step, StepWithMetrics } from '@/types'
+import type { StepWithMetrics } from '@/types'
 
 interface Props {
-  campaign: Readonly<Omit<Campaign, 'steps'>> & {
-    steps: ReadonlyArray<Readonly<Step>>
-  }
   stepsWithMetrics: StepWithMetrics[]
   worstStep: StepWithMetrics | undefined
   overallConversionRate: number
@@ -13,35 +10,72 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const isWorstSignificant = computed(() => {
+  if (!props.worstStep) {
+    return false
+  }
+
+  const isLast =
+    props.stepsWithMetrics[props.stepsWithMetrics.length - 1]?.id ===
+    props.worstStep.id
+
+  return isLast
+    ? props.worstStep.dropOffRate >= 5
+    : props.worstStep.dropOffRate >= 10
+})
+
 const insights = computed(() => {
-  const results: string[] = []
+  if (props.stepsWithMetrics.length === 0) {
+    return []
+  }
+
+  const list: string[] = []
 
   if (props.worstStep) {
-    if (props.worstStep.type === 'email') {
-      results.push(
-        `Biggest drop-off is at ${props.worstStep.name} (${props.worstStep.dropOffRate}%). The email form may be too complex — consider reducing the number of fields.`,
-      )
+    if (isWorstSignificant.value) {
+      if (props.worstStep.type === 'email') {
+        list.push(
+          `Biggest drop-off is at ${props.worstStep.name} (${props.worstStep.dropOffRate}%). The email form may be too complex — consider reducing the number of fields.`,
+        )
+      } else {
+        list.push(
+          `Biggest drop-off is at ${props.worstStep.name} (${props.worstStep.dropOffRate}%). Focus optimization here first.`,
+        )
+      }
     } else {
-      results.push(
-        `Biggest drop-off is at ${props.worstStep.name} (${props.worstStep.dropOffRate}%). Focus optimization here first.`,
+      list.push(
+        `This campaign is performing well. The highest drop-off is only ${props.worstStep.dropOffRate}% at ${props.worstStep.name} — minor fine-tuning could push it even further.`,
       )
     }
   }
 
-  const firstStep = props.stepsWithMetrics[0]
-  if (firstStep && firstStep.dropOffRate > 80) {
-    results.push(
-      "Most visitors didn't engage with the first step. Consider improving the offer or timing.",
+  if (props.worstStep) {
+    const criticalSteps = props.stepsWithMetrics.filter(
+      (s) => s.dropOffRate >= 60 && s.id !== props.worstStep!.id,
     )
+    for (const step of criticalSteps) {
+      if (list.length >= 3) {
+        break
+      }
+      if (step.type === 'email') {
+        list.push(
+          `${step.name} also has critically high drop-off (${step.dropOffRate}%). Consider reducing the number of fields.`,
+        )
+      } else {
+        list.push(
+          `${step.name} also has critically high drop-off (${step.dropOffRate}%). Review this step as well.`,
+        )
+      }
+    }
   }
 
-  if (props.overallConversionRate < 5) {
-    results.push(
+  if (list.length < 3 && props.overallConversionRate < 5) {
+    list.push(
       'Overall conversion is below 5%. Consider A/B testing your campaign.',
     )
   }
 
-  return results.slice(0, 3)
+  return list.slice(0, 3)
 })
 </script>
 
