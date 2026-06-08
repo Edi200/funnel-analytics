@@ -1,5 +1,9 @@
-import { computed } from 'vue'
-import type { Campaign, StepWithMetrics } from '@/types'
+import { computed, toValue, type MaybeRefOrGetter } from 'vue'
+import type { Step, StepWithMetrics } from '@/types'
+
+interface CampaignForMetrics {
+  steps: ReadonlyArray<Step>
+}
 
 function roundToOneDecimal(value: number): number {
   return Math.round(value * 10) / 10
@@ -13,9 +17,9 @@ function computeDropOffRate(views: number, proceeds: number): number {
   return roundToOneDecimal(((views - proceeds) / views) * 100)
 }
 
-export function useFunnelMetrics(campaign: Campaign) {
+export function useFunnelMetrics(campaign: MaybeRefOrGetter<CampaignForMetrics>) {
   const stepsWithMetrics = computed<StepWithMetrics[]>(() =>
-    campaign.steps.map((step) => ({
+    toValue(campaign).steps.map((step) => ({
       ...step,
       dropOffRate: computeDropOffRate(step.views, step.proceeds),
     })),
