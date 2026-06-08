@@ -1,0 +1,30 @@
+---
+alwaysApply: true
+---
+
+# Project: Funnel Analytics
+
+## What this app does
+A small funnel analytics web app for popup campaigns.
+Marketers can see step-by-step drop-off data for each campaign and quickly identify the worst-performing step.
+
+## Stack
+- Vue 3 + Vite + TypeScript
+- Tailwind CSS v4 (via @tailwindcss/vite, imported in main.css)
+- Vue Router (SPA, no backend — data loaded from static JSON)
+
+## Data
+JSON is imported directly on the frontend from `src/data/campaigns.json`.
+- `views`: how many users saw that step
+- `proceeds`: how many users continued to the next step (or completed, for the last step)
+- Drop-off % = (views - proceeds) / views * 100
+
+## Components
+- `CampaignList` — shows all campaigns with name, device, overall conversion rate
+- `CampaignDetail` — shows step-by-step funnel for a selected campaign
+- `FunnelStep` — single step row with visual bar, views, proceeds, drop-off %
+- `InsightsPanel` — hardcoded rule-based suggestions for the selected campaign
+
+## Routing
+- `/` — CampaignList
+- `/campaign/:id` — CampaignDetail

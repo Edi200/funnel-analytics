@@ -1,0 +1,36 @@
+---
+alwaysApply: true
+---
+
+# Vue Code Style
+
+## Component structure
+- Always use `<script setup lang="ts">` (Composition API)
+- Order: `<script setup>` → `<template>` → `<style>` (if needed)
+- One component per file, PascalCase filename (e.g. CampaignList.vue)
+
+## TypeScript
+- Use `defineProps<{}>()` and `defineEmits<>()` — no runtime declarations
+- Prefer `interface` over `type` for props and data shapes
+- Use `ref` for primitives, `reactive` for objects
+- Use `computed()` for all derived data (drop-off %, conversion rate)
+
+## Styling
+- Tailwind v4 classes only — no inline styles, no scoped CSS unless unavoidable
+- Mobile-first responsive design
+
+## Logic
+- Extract reusable logic into composables (`src/composables/`)
+- Keep template logic minimal — calculations belong in `computed` or composables
+- Use `v-memo` only if rendering performance is visibly an issue
+
+## Naming
+- Variables: camelCase with auxiliary verbs (`isLoading`, `hasError`, `selectedCampaign`)
+- Composables: `use` prefix (`useCampaigns`, `useFunnelMetrics`)
+- Directories: lowercase with dashes (`funnel-step`, `campaign-detail`)
+
+## What NOT to use
+- No Pinia (not installed, not needed)
+- No Options API
+- No classes
+- No enums — use string literal types instead
