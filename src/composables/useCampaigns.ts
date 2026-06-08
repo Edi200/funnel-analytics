@@ -10,7 +10,9 @@ export function useCampaigns() {
   const data = campaignsData as CampaignsData
   const campaigns = readonly(ref(data.campaigns))
 
-  function getOverallConversionRate(campaign: Campaign): number {
+  function getOverallConversionRate(campaign: {
+    steps: readonly { views: number; proceeds: number }[]
+  }): number {
     const firstStep = campaign.steps[0]
     const lastStep = campaign.steps[campaign.steps.length - 1]
 
