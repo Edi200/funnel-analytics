@@ -7,6 +7,10 @@ export interface Step {
   description: string
 }
 
+export interface StepWithMetrics extends Step {
+  dropOffRate: number
+}
+
 export interface Campaign {
   id: string
   name: string
