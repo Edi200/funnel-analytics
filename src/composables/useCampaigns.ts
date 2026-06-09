@@ -1,10 +1,7 @@
 import { readonly, ref } from 'vue'
 import campaignsData from '@/data/campaigns.json'
 import type { Campaign, CampaignsData } from '@/types'
-
-function roundToOneDecimal(value: number): number {
-  return Math.round(value * 10) / 10
-}
+import { roundToOneDecimal } from '@/utils/math'
 
 export function useCampaigns() {
   const data = campaignsData as CampaignsData

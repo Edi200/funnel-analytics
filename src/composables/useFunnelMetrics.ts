@@ -1,12 +1,9 @@
 import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import type { Step, StepWithMetrics } from '@/types'
+import { roundToOneDecimal } from '@/utils/math'
 
 interface CampaignForMetrics {
   steps: ReadonlyArray<Step>
-}
-
-function roundToOneDecimal(value: number): number {
-  return Math.round(value * 10) / 10
 }
 
 function computeDropOffRate(views: number, proceeds: number): number {
